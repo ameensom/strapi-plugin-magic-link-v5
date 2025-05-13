@@ -94,11 +94,11 @@ const TokensPage = () => {
         setTokens([]);
       }
     } catch (error) {
-      console.error("Fehler beim Laden der Tokens:", error);
+      console.error("Error loading tokens:", error);
       setTokens([]); // Im Fehlerfall leeres Array setzen
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Laden der Magic Link Tokens'
+        message: 'Error loading Magic Link tokens'
       });
     } finally {
       setIsLoading(false);
@@ -117,12 +117,12 @@ const TokensPage = () => {
         setJwtSessions([]);
       }
     } catch (error) {
-      console.error("Fehler beim Laden der JWT Sessions:", error);
+      console.error("Error loading JWT sessions:", error);
       // Bei Fehlern leeres Array setzen, damit die UI nicht abstürzt
       setJwtSessions([]);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Laden der JWT Sessions'
+        message: 'Error loading JWT sessions'
       });
     } finally {
       setIsLoadingJwt(false);
@@ -140,11 +140,11 @@ const TokensPage = () => {
         setBannedIPs([]);
       }
     } catch (error) {
-      console.error("Fehler beim Laden der gesperrten IPs:", error);
+      console.error("Error loading banned IPs:", error);
       setBannedIPs([]);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Laden der gesperrten IPs'
+        message: 'Error loading banned IPs'
       });
     } finally {
       setIsLoadingBannedIPs(false);
@@ -160,7 +160,7 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: `IP ${ipToUnban} wurde entsperrt`
+        message: `IP ${ipToUnban} has been unbanned`
       });
       
       // IPs neu laden
@@ -168,10 +168,10 @@ const TokensPage = () => {
       setIpToUnban('');
       setShowIPUnbanModal(false);
     } catch (error) {
-      console.error("Fehler beim Entsperren der IP:", error);
+      console.error("Error unbanning IP:", error);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Entsperren der IP'
+        message: 'Error unbanning IP'
       });
     }
   };
@@ -192,7 +192,7 @@ const TokensPage = () => {
       }
       return null;
     } catch (error) {
-      console.error("Fehler beim Validieren der E-Mail:", error);
+      console.error("Error validating email:", error);
       // Nur Log-Ausgabe, kein Fehlerwerfen oder Benachrichtigung
       // Toggle-Notification wird von der aufrufenden Funktion gehandhabt
       return null;
@@ -213,14 +213,14 @@ const TokensPage = () => {
       } else {
         toggleNotification({
           type: 'warning',
-          message: `Kein Benutzer mit der E-Mail ${email} gefunden`
+          message: `No user found with email ${email}`
         });
       }
     } catch (error) {
-      console.error("Fehler bei der Navigation zum Benutzerprofil:", error);
+      console.error("Error navigating to user profile:", error);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler bei der Navigation zum Benutzerprofil'
+        message: 'Error navigating to user profile'
       });
     }
   };
@@ -230,7 +230,7 @@ const TokensPage = () => {
     if (!email || !email.includes('@')) {
       setEmailValidationStatus({
         valid: false,
-        message: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+        message: 'Please enter a valid email address.'
       });
       return false;
     }
@@ -281,7 +281,7 @@ const TokensPage = () => {
       if (canCreateUser) {
         setEmailValidationStatus({
           valid: true,
-          message: 'Token kann erstellt werden. Benutzer wird bei Bedarf automatisch erstellt.'
+          message: 'Token can be created. User will be automatically created if needed.'
         });
         return true;
       }
@@ -293,22 +293,22 @@ const TokensPage = () => {
       if (user) {
         setEmailValidationStatus({
           valid: true,
-          message: 'Benutzer gefunden. Token kann erstellt werden.'
+          message: 'User found. Token can be created.'
         });
         return true;
       } else {
         // Andernfalls ist der Passwordless Login nicht möglich
         setEmailValidationStatus({
           valid: false,
-          message: 'Die E-Mail existiert nicht und die automatische Benutzererstellung ist deaktiviert.'
+          message: 'The email does not exist, and automatic user creation is disabled.'
         });
         return false;
       }
     } catch (error) {
-      console.error("Fehler bei der E-Mail-Validierung:", error);
+      console.error("Error validating email:", error);
       setEmailValidationStatus({
         valid: false,
-        message: 'Fehler bei der Validierung. Bitte versuchen Sie es erneut.'
+        message: 'Validation error. Please try again.'
       });
       return false;
     } finally {
@@ -329,13 +329,13 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: 'Token erfolgreich blockiert'
+        message: 'Token successfully blocked'
       });
     } catch (error) {
-      console.error("Fehler beim Blockieren des Tokens:", error);
+      console.error("Error blocking token:", error);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Blockieren des Tokens'
+        message: 'Error blocking token'
       });
     }
   };
@@ -358,13 +358,13 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: 'Token erfolgreich aktiviert'
+        message: 'Token successfully activated'
       });
     } catch (error) {
-      console.error("Fehler beim Aktivieren des Tokens:", error);
+      console.error("Error activating token:", error);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Aktivieren des Tokens'
+        message: 'Error activating token'
       });
     }
   };
@@ -391,13 +391,13 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: `Gültigkeit des Tokens um ${days} Tage verlängert`
+        message: `Token validity extended by ${days} days`
       });
     } catch (error) {
-      console.error("Fehler beim Verlängern des Tokens:", error);
+      console.error("Error extending token validity:", error);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Verlängern der Gültigkeit'
+        message: 'Error extending token validity'
       });
     }
   };
@@ -413,13 +413,13 @@ const TokensPage = () => {
       fetchJwtSessions();
       toggleNotification({
         type: 'success',
-        message: 'Session wurde erfolgreich gesperrt'
+        message: 'Session successfully revoked'
       });
     } catch (error) {
-      console.error("Fehler beim Sperren:", error);
+      console.error("Error revoking session:", error);
       toggleNotification({
         type: 'danger',
-        message: 'Fehler beim Sperren der Session'
+        message: 'Error revoking session'
       });
     }
   };
@@ -435,22 +435,22 @@ const TokensPage = () => {
       fetchJwtSessions();
       toggleNotification({
         type: 'success',
-        message: 'Session wurde erfolgreich entsperrt'
+        message: 'Session successfully unrevoked'
       });
     } catch (error) {
-      console.error("Fehler beim Entsperren:", error);
+      console.error("Error unrevoking session:", error);
       toggleNotification({
         type: 'danger',
-        message: 'Fehler beim Entsperren der Session'
+        message: 'Error unrevoking session'
       });
     }
   };
 
   // Formatiere Datum
   const formatDate = (dateString) => {
-    if (!dateString) return 'Nicht verfügbar';
+    if (!dateString) return 'Not available';
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat('de-DE', {
+    return new Intl.DateTimeFormat('en-US', {
       year: 'numeric', 
       month: '2-digit', 
       day: '2-digit',
@@ -472,16 +472,16 @@ const TokensPage = () => {
       
       return date < now;
     } catch (error) {
-      console.error('Fehler beim Prüfen des Ablaufdatums:', error);
+      console.error('Error checking expiration date:', error);
       return false;
     }
   };
 
   // Die Browser-Erkennung verbessern
   const extractBrowserInfo = (userAgent) => {
-    if (!userAgent) return { name: 'Unbekannt', device: 'Unbekannt', version: '', osVersion: '' };
+    if (!userAgent) return { name: 'Unknown', device: 'Unknown', version: '', osVersion: '' };
     
-    let browser = 'Unbekannt';
+    let browser = 'Unknown';
     let device = 'Desktop';
     let version = '';
     let osVersion = '';
@@ -597,14 +597,14 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: `${selectedTokens.length} ${activeTab === 'jwt-sessions' ? 'Session(s)' : 'Token(s)'} erfolgreich ${activeTab === 'jwt-sessions' ? 'gesperrt' : 'gelöscht'}`,
+        message: `${selectedTokens.length} ${activeTab === 'jwt-sessions' ? 'Session(s)' : 'Token(s)'} successfully ${activeTab === 'jwt-sessions' ? 'revoked' : 'deleted'}`,
       });
       setSelectedTokens([]);
     } catch (error) {
-      console.error('Fehler beim Massenlöschen:', error);
+      console.error('Error during bulk delete:', error);
       toggleNotification({
         type: 'danger',
-        message: `Fehler beim ${activeTab === 'jwt-sessions' ? 'Sperren' : 'Löschen'} der ausgewählten ${activeTab === 'jwt-sessions' ? 'Sessions' : 'Tokens'}`,
+        message: `Error ${activeTab === 'jwt-sessions' ? 'revoking' : 'deleting'} selected ${activeTab === 'jwt-sessions' ? 'sessions' : 'tokens'}`,
       });
     }
   };
@@ -615,7 +615,7 @@ const TokensPage = () => {
       if (!ipToBan) {
         toggleNotification({
           type: 'warning',
-          message: 'Bitte gib eine gültige IP-Adresse ein',
+          message: 'Please enter a valid IP address',
         });
         return;
       }
@@ -627,7 +627,7 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: `IP ${ipToBan} wurde erfolgreich gebannt`,
+        message: `IP ${ipToBan} has been successfully banned`,
       });
 
       // Aktualisiere die Token-Liste
@@ -636,10 +636,10 @@ const TokensPage = () => {
       setIpToBan('');
       
     } catch (error) {
-      console.error('IP-Bann fehlgeschlagen:', error);
+      console.error('IP ban failed:', error);
       toggleNotification({
         type: 'danger',
-        message: error.response?.data?.message || 'Fehler beim Bannen der IP',
+        message: error.response?.data?.message || 'Error banning IP',
       });
     }
   };
@@ -653,13 +653,13 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: response.data.message || 'Abgelaufene Sessions wurden aufgeräumt'
+        message: response.data.message || 'Expired sessions have been cleaned up'
       });
     } catch (error) {
-      console.error("Fehler beim Aufräumen der Sessions:", error);
+      console.error("Error cleaning up sessions:", error);
       toggleNotification({
         type: 'danger',
-        message: 'Fehler beim Aufräumen der abgelaufenen Sessions'
+        message: 'Error cleaning up expired sessions'
       });
     } finally {
       setIsLoadingJwt(false);
@@ -692,7 +692,7 @@ const TokensPage = () => {
         } catch (e) {
           toggleNotification({
             type: 'warning',
-            message: 'Der JSON-Kontext ist nicht gültig. Bitte korrigieren Sie das Format.',
+            message: 'The JSON context is not valid. Please correct the format.',
           });
           setIsCreating(false);
           return;
@@ -708,7 +708,7 @@ const TokensPage = () => {
       
       toggleNotification({
         type: 'success',
-        message: `Token für ${emailToCreate} wurde erstellt!`,
+        message: `Token for ${emailToCreate} has been created!`,
       });
       
       // Zurücksetzen der Felder
@@ -719,11 +719,11 @@ const TokensPage = () => {
       
       fetchTokens(); // Token-Liste aktualisieren
     } catch (error) {
-      console.error('Fehler beim Erstellen des Tokens:', error);
+      console.error('Error creating token:', error);
       // Zeige die spezifische Fehlermeldung vom Backend an
       const errorMessage = error.response?.data?.error?.message || 
                          error.response?.data?.message || 
-                         'Fehler beim Erstellen des Tokens';
+                         'Error creating token';
       toggleNotification({
         type: 'danger',
         // message: error.response?.data?.message || 'Fehler beim Erstellen des Tokens',
@@ -883,11 +883,11 @@ const TokensPage = () => {
         <Flex justifyContent="space-between" alignItems="center">
           <Box>
             <Typography variant="alpha" paddingBottom={2}>
-              Token-Verwaltung
+              Token Management
             </Typography>
             <br />
             <Typography variant="epsilon" textColor="neutral600">
-              Verwaltung von Magic Link Tokens und JWT-Sessions
+              Manage Magic Link tokens and JWT sessions
             </Typography>
           </Box>
           <Flex gap={2}>
@@ -896,14 +896,14 @@ const TokensPage = () => {
               startIcon={<Plus />}
               variant="default"
             >
-              Token erstellen
+              Create Token
             </Button>
             <Button 
               onClick={bulkDeleteTokens}
               variant="danger"
               startIcon={<Trash />}
             >
-              {activeTab === 'jwt-sessions' ? 'Bulk Sperren' : 'Bulk Delete'}
+              {activeTab === 'jwt-sessions' ? 'Bulk Revoke' : 'Bulk Delete'}
             </Button>
             <Button
               variant="secondary"
@@ -916,7 +916,7 @@ const TokensPage = () => {
                 setShowIPBanModal(true);
               }}
             >
-              IPs bannen ({new Set(selectedTokens
+              Ban IPs ({new Set(selectedTokens
                 .map(tokenId => tokens.find(t => t.id === tokenId)?.ip_address)
                 .filter(Boolean)).size})
             </Button>
@@ -928,14 +928,14 @@ const TokensPage = () => {
               }}
               disabled={isLoading || isLoadingJwt}
             >
-              Aktualisieren
+              Refresh
             </Button>
             <Button
               variant="secondary"
               startIcon={<ArrowLeft fill="neutral600" />}
               onClick={() => window.location.href = '/admin/plugins/magic-link'}
             >
-              Zurück
+              Back
             </Button>
           </Flex>
         </Flex>
@@ -963,7 +963,7 @@ const TokensPage = () => {
             onClick={() => setActiveTab('ip-bans')}
             fullWidth
           >
-            IP-Sperren
+            IP Bans
           </Button>
         </Flex>
       </Box>
@@ -989,10 +989,10 @@ const TokensPage = () => {
                 }}
               >
                 {[
-                  { title: "Alle Tokens", value: tokenStats.total, color: "neutral800", icon: <Key /> },
-                  { title: "Aktive Tokens", value: tokenStats.active, color: "success500", icon: <Key /> },
-                  { title: "Gültige Tokens", value: tokenStats.valid, color: "primary600", icon: <Key /> },
-                  { title: "Abgelaufene Tokens", value: tokenStats.expired, color: "warning500", icon: <WarningCircle /> }
+                  { title: "All Tokens", value: tokenStats.total, color: "neutral800", icon: <Key /> },
+                  { title: "Active Tokens", value: tokenStats.active, color: "success500", icon: <Key /> },
+                  { title: "Valid Tokens", value: tokenStats.valid, color: "primary600", icon: <Key /> },
+                  { title: "Expired Tokens", value: tokenStats.expired, color: "warning500", icon: <WarningCircle /> }
                 ].map((stat, index) => (
                   <Box 
                     key={index}
@@ -1037,26 +1037,26 @@ const TokensPage = () => {
                     style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
                   >
                     <Key fill="primary600" />
-                    Aktive Tokens: {tokenStats.active}
+                    Active Tokens: {tokenStats.active}
                   </Badge>
                 </Flex>
               </Flex>
               
               {isLoading ? (
                 <Flex justifyContent="center" alignItems="center" paddingTop={6} paddingBottom={6}>
-                  <Loader>Tokens werden geladen...</Loader>
+                  <Loader>Loading tokens...</Loader>
                 </Flex>
               ) : activeTokens.length === 0 ? (
                 <EmptyStateLayout
                   icon={<Information fill="neutral600" />}
-                  content="Keine aktiven Magic Link Tokens gefunden"
+                  content="No active Magic Link tokens found"
                   action={
                     <Button 
                       variant="secondary" 
                       startIcon={<ArrowRight fill="primary600" />}
                       onClick={fetchTokens}
                     >
-                      Aktualisieren
+                      Refresh
                     </Button>
                   }
                 />
@@ -1083,7 +1083,7 @@ const TokensPage = () => {
                             }}
                             checked={selectedTokens.length === activeTokens.length && activeTokens.length > 0}
                             indeterminate={selectedTokens.length > 0 && selectedTokens.length < activeTokens.length ? true : undefined}
-                            aria-label="Alle Tokens auswählen"
+                            aria-label="Select all tokens"
                           />
                         </Th>
                         <Th width="20%">
@@ -1092,7 +1092,7 @@ const TokensPage = () => {
                               <Mail width="1rem" color="primary600" />
                             </Box>
                             <Typography variant="sigma" textColor="neutral600" fontWeight="bold" textTransform="uppercase">
-                              E-Mail
+                              Email
                             </Typography>
                           </Flex>
                         </Th>
@@ -1112,7 +1112,7 @@ const TokensPage = () => {
                               <Globe width="1rem" color="warning600" />
                             </Box>
                             <Typography variant="sigma" textColor="neutral600" fontWeight="bold" textTransform="uppercase">
-                              Geräteinfo
+                              Device Info
                             </Typography>
                           </Flex>
                         </Th>
@@ -1125,7 +1125,7 @@ const TokensPage = () => {
                               </Flex>
                             </Box>
                             <Typography variant="sigma" textColor="neutral600" fontWeight="bold" textTransform="uppercase" style={{ paddingLeft: '10px' }}>
-                              Zuletzt verwendet / Gültig bis
+                              Last Used / Valid Until
                             </Typography>
                           </Flex>
                         </Th>
@@ -1135,7 +1135,7 @@ const TokensPage = () => {
                               <Pencil width="1rem" color="danger600" />
                             </Box>
                             <Typography variant="sigma" textColor="neutral600" fontWeight="bold" textTransform="uppercase">
-                              Aktionen
+                              Actions
                             </Typography>
                           </Flex>
                         </Th>
@@ -1143,7 +1143,7 @@ const TokensPage = () => {
                     </Thead>
                     <Tbody>
                       {activeTokens.map((token, index) => {
-                        const browserInfo = token.user_agent ? extractBrowserInfo(token.user_agent) : { name: 'Unbekannt', device: 'Unbekannt', version: '', osVersion: '' };
+                        const browserInfo = token.user_agent ? extractBrowserInfo(token.user_agent) : { name: 'Unknown', device: 'Unknown', version: '', osVersion: '' };
                         const isTokenExpired = isExpired(token.expires_at);
                         
                         return (
@@ -1157,7 +1157,7 @@ const TokensPage = () => {
                           >
                             <Td>
                               <Checkbox
-                                aria-label={`Token für ${token.email} auswählen`}
+                                aria-label={`Select token for ${token.email}`}
                                 checked={selectedTokens.includes(token.id)}
                                 onCheckedChange={(checked) => {
                                   if (checked) {
@@ -1177,13 +1177,13 @@ const TokensPage = () => {
                               <Flex direction="column" alignItems="flex-start" gap={1}>
                                 {token.is_active ? (
                                   <>
-                                    <StatusBadge status="success" text="Aktiv" subText={isTokenExpired ? "Abgelaufen" : ""} />
+                                    <StatusBadge status="success" text="Active" subText={isTokenExpired ? "Expired" : ""} />
                                     {isTokenExpired && (
-                                      <StatusBadge status="warning" text="Abgelaufen" subText={formatDate(token.expires_at)} />
+                                      <StatusBadge status="warning" text="Expired" subText={formatDate(token.expires_at)} />
                                     )}
                                   </>
                                 ) : (
-                                  <StatusBadge status="danger" text="Blockiert" subText="" />
+                                  <StatusBadge status="danger" text="Blocked" subText="" />
                                 )}
                               </Flex>
                             </Td>
@@ -1282,7 +1282,7 @@ const TokensPage = () => {
                                       <Box style={{ width: '24px', display: 'flex', justifyContent: 'center', marginRight: '8px' }}>
                                         <Calendar fill="neutral600" />
                                       </Box>
-                                      <Typography variant="pi" fontWeight="bold" textColor="neutral600" style={{width: '120px', display: 'inline-block'}}>Erstellt:</Typography>
+                                      <Typography variant="pi" fontWeight="bold" textColor="neutral600" style={{width: '120px', display: 'inline-block'}}>Created:</Typography>
                                       <Typography variant="pi">{formatDate(token.createdAt)}</Typography>
                                     </Box>
                                   </Box>
@@ -1305,7 +1305,7 @@ const TokensPage = () => {
                                       <Box style={{ width: '24px', display: 'flex', justifyContent: 'center', marginRight: '8px' }}>
                                         <Clock fill={isTokenExpired ? "danger600" : "success600"} />
                                       </Box>
-                                      <Typography variant="pi" fontWeight="bold" textColor={isTokenExpired ? "danger600" : "success600"} style={{width: '120px', display: 'inline-block'}}>Gültig bis:</Typography>
+                                      <Typography variant="pi" fontWeight="bold" textColor={isTokenExpired ? "danger600" : "success600"} style={{width: '120px', display: 'inline-block'}}>Valid Until:</Typography>
                                       <Typography variant="pi" textColor={isTokenExpired ? "danger600" : "success600"}>{formatDate(token.expires_at)}</Typography>
                                     </Box>
                                   </Box>
@@ -1329,7 +1329,7 @@ const TokensPage = () => {
                                         <Box style={{ width: '24px', display: 'flex', justifyContent: 'center', marginRight: '8px' }}>
                                           <Clock fill="primary600" />
                                         </Box>
-                                        <Typography variant="pi" fontWeight="bold" textColor="primary600" style={{width: '120px', display: 'inline-block'}}>Zuletzt verwendet:</Typography>
+                                        <Typography variant="pi" fontWeight="bold" textColor="primary600" style={{width: '120px', display: 'inline-block'}}>Last Used:</Typography>
                                         <Typography variant="pi">{formatDate(token.last_used_at)}</Typography>
                                       </Box>
                                     </Box>
@@ -1350,7 +1350,7 @@ const TokensPage = () => {
                                     transition: 'all 0.2s ease-in-out'
                                   }}
                                 >
-                                  Blockieren
+                                  Block
                                 </Button>
                                 <Button 
                                   variant="secondary"
@@ -1396,10 +1396,10 @@ const TokensPage = () => {
                 }}
               >
                 {[
-                  { title: "Alle Sessions", value: jwtStats.total, color: "neutral800", icon: <Key /> },
-                  { title: "Aktive Sessions", value: jwtStats.active, color: "success500", icon: <Key /> },
-                  { title: "Abgelaufene Sessions", value: jwtStats.expired, color: "warning500", icon: <WarningCircle /> },
-                  { title: "Gesperrte Sessions", value: jwtStats.revoked, color: "danger500", icon: <Lock /> }
+                  { title: "All Sessions", value: jwtStats.total, color: "neutral800", icon: <Key /> },
+                  { title: "Active Sessions", value: jwtStats.active, color: "success500", icon: <Key /> },
+                  { title: "Expired Sessions", value: jwtStats.expired, color: "warning500", icon: <WarningCircle /> },
+                  { title: "Revoked Sessions", value: jwtStats.revoked, color: "danger500", icon: <Lock /> }
                 ].map((stat, index) => (
                   <Box key={index} style={{ flex: '1 1 180px', minWidth: '180px', maxWidth: '240px' }}>
                     <StatCard 
@@ -1435,29 +1435,29 @@ const TokensPage = () => {
                     onClick={cleanupSessions}
                     disabled={isLoadingJwt}
                   >
-                    Abgelaufene aufräumen
+                    Clean Up Expired
                   </Button>
                   <Button
                     variant={showRevokedTokens ? "success" : "secondary"}
                     startIcon={showRevokedTokens ? <CheckCircle /> : <Filter />}
                     onClick={() => setShowRevokedTokens(!showRevokedTokens)}
                   >
-                    {showRevokedTokens ? 'Nur aktive anzeigen' : 'Auch gesperrte anzeigen'}
+                    {showRevokedTokens ? 'Show Active Only' : 'Show Revoked Too'}
                   </Button>
                 </Flex>
               </Flex>
               
               {isLoadingJwt ? (
                 <Flex justifyContent="center" alignItems="center" paddingTop={6} paddingBottom={6}>
-                  <Loader>JWT Sessions werden geladen...</Loader>
+                  <Loader>Loading JWT sessions...</Loader>
                 </Flex>
               ) : filteredJwtSessions.length === 0 ? (
                 <EmptyStateLayout
                   icon={<Information fill="neutral600" />}
                   content={
                     showRevokedTokens 
-                      ? "Keine JWT Sessions gefunden" 
-                      : "Keine aktiven JWT Sessions gefunden"
+                      ? "No JWT sessions found" 
+                      : "No active JWT sessions found"
                   }
                   action={
                     <Button 
@@ -1465,7 +1465,7 @@ const TokensPage = () => {
                       startIcon={<ArrowRight fill="primary600" />}
                       onClick={fetchJwtSessions}
                     >
-                      Aktualisieren
+                      Refresh
                     </Button>
                   }
                 />
@@ -1483,7 +1483,7 @@ const TokensPage = () => {
                       <Tr style={{ borderBottom: '2px solid #dcdce4' }}>
                         <Th width="5%">
                           <Checkbox
-                            aria-label="Alle Sessions auswählen"
+                            aria-label="Select all sessions"
                             indeterminate={selectedTokens.length > 0 && selectedTokens.length < filteredJwtSessions.length ? true : undefined}
                             checked={selectedTokens.length === filteredJwtSessions.length && filteredJwtSessions.length > 0}
                             onCheckedChange={(checked) => {
@@ -1498,7 +1498,7 @@ const TokensPage = () => {
                         <Th width="15%">
                           <Flex gap={2} alignItems="center">
                             <Mail fill="neutral600" />
-                            <Typography variant="sigma">Benutzer</Typography>
+                            <Typography variant="sigma">User</Typography>
                           </Flex>
                         </Th>
                         <Th width="10%">
@@ -1516,32 +1516,32 @@ const TokensPage = () => {
                         <Th width="15%">
                           <Flex gap={2} alignItems="center">
                             <Calendar fill="neutral600" />
-                            <Typography variant="sigma">Erstellt</Typography>
+                            <Typography variant="sigma">Created</Typography>
                           </Flex>
                         </Th>
                         <Th width="15%">
                           <Flex gap={2} alignItems="center">
                             <Clock fill="neutral600" />
-                            <Typography variant="sigma">Läuft ab</Typography>
+                            <Typography variant="sigma">Expires</Typography>
                           </Flex>
                         </Th>
                         <Th width="15%">
                           <Flex gap={2} alignItems="center">
                             <Information fill="neutral600" />
-                            <Typography variant="sigma">Quelle</Typography>
+                            <Typography variant="sigma">Source</Typography>
                           </Flex>
                         </Th>
                         <Th width="15%">
                           <Flex gap={2} alignItems="center">
                             <Pencil fill="neutral600" />
-                            <Typography variant="sigma">Aktionen</Typography>
+                            <Typography variant="sigma">Actions</Typography>
                           </Flex>
                         </Th>
                       </Tr>
                     </Thead>
                     <Tbody>
                       {filteredJwtSessions.map((session, index) => {
-                        const browserInfo = session.userAgent ? extractBrowserInfo(session.userAgent) : { name: 'Unbekannt', device: 'Unbekannt', version: '', osVersion: '' };
+                        const browserInfo = session.userAgent ? extractBrowserInfo(session.userAgent) : { name: 'Unknown', device: 'Unknown', version: '', osVersion: '' };
                         const isSessionExpired = isExpired(session.expiresAt);
                         return (
                           <Tr 
@@ -1554,7 +1554,7 @@ const TokensPage = () => {
                           >
                             <Td>
                               <Checkbox
-                                aria-label={`Session für ${session.username || session.userId || 'Unbekannt'} auswählen`}
+                                aria-label={`Select session for ${session.username || session.userId || 'Unknown'}`}
                                 checked={selectedTokens.includes(session.id)}
                                 onCheckedChange={(checked) => {
                                   if (checked) {
@@ -1568,7 +1568,7 @@ const TokensPage = () => {
                             <Td>
                               <Box>
                                 <Typography fontWeight="bold" textColor="primary600">
-                                  {session.username || session.userId || 'Unbekannt'}
+                                  {session.username || session.userId || 'Unknown'}
                                 </Typography>
                                 {session.email && (
                                   <Link href={`mailto:${session.email}`}>
@@ -1582,12 +1582,12 @@ const TokensPage = () => {
                             <Td>
                               <Flex direction="column" alignItems="flex-start" gap={1}>
                                 {session.revoked ? (
-                                  <StatusBadge status="danger" text="Gesperrt" subText="" />
+                                  <StatusBadge status="danger" text="Revoked" subText="" />
                                 ) : (
                                   <>
-                                    <StatusBadge status="success" text="Aktiv" subText={isSessionExpired ? "Abgelaufen" : ""} />
+                                    <StatusBadge status="success" text="Active" subText={isSessionExpired ? "Expired" : ""} />
                                     {isSessionExpired && (
-                                      <StatusBadge status="warning" text="Abgelaufen" subText={formatDate(session.expiresAt)} />
+                                      <StatusBadge status="warning" text="Expired" subText={formatDate(session.expiresAt)} />
                                     )}
                                   </>
                                 )}
@@ -1755,7 +1755,7 @@ const TokensPage = () => {
                                     transition: 'all 0.2s ease-in-out'
                                   }}
                                 >
-                                  Sperren
+                                  Revoke
                                 </Button>
                               ) : session.revoked ? (
                                 <Button 
@@ -1768,7 +1768,7 @@ const TokensPage = () => {
                                     transition: 'all 0.2s ease-in-out'
                                   }}
                                 >
-                                  Entsperren
+                                  Unrevoke
                                 </Button>
                               ) : (
                                 <Typography variant="pi" textColor="neutral600" textAlign="center">
@@ -1792,7 +1792,7 @@ const TokensPage = () => {
           <>
             <Box background="neutral0" padding={8} shadow="tableShadow" hasRadius>
               <Flex direction="column" gap={6}>
-                <Typography variant="beta">Gesperrte IP-Adressen</Typography>
+                <Typography variant="beta">Banned IP Addresses</Typography>
                 
                 <Flex gap={4} justifyContent="space-between" alignItems="center">
                   <Box>
@@ -1801,13 +1801,13 @@ const TokensPage = () => {
                         fetchBannedIPs();
                         toggleNotification({
                           type: 'info',
-                          message: 'IP-Liste aktualisiert'
+                          message: 'IP list refreshed'
                         });
                       }}
                       startIcon={<ArrowRight />}
                       loading={isLoadingBannedIPs}
                     >
-                      Aktualisieren
+                      Refresh
                     </Button>
                   </Box>
                   <Box>
@@ -1816,27 +1816,27 @@ const TokensPage = () => {
                       startIcon={<Shield />}
                       variant="danger"
                     >
-                      IP sperren
+                      Ban IP
                     </Button>
                   </Box>
                 </Flex>
                 
                 {isLoadingBannedIPs ? (
                   <Flex justifyContent="center" padding={6}>
-                    <Loader>Lade gesperrte IP-Adressen...</Loader>
+                    <Loader>Loading banned IP addresses...</Loader>
                   </Flex>
                 ) : (
                   bannedIPs.length === 0 ? (
                     <EmptyStateLayout 
                       icon={<Shield width="6rem" height="6rem" />}
-                      content="Keine gesperrten IP-Adressen gefunden"
+                      content="No banned IP addresses found"
                       action={
                         <Button
                           onClick={() => setShowIPBanModal(true)}
                           startIcon={<Shield />}
                           variant="danger"
                         >
-                          IP sperren
+                          Ban IP
                         </Button>
                       }
                     />
@@ -1845,13 +1845,13 @@ const TokensPage = () => {
                       <Thead>
                         <Tr>
                           <Th>
-                            <Typography variant="sigma">IP-Adresse</Typography>
+                            <Typography variant="sigma">IP Address</Typography>
                           </Th>
                           <Th>
                             <Typography variant="sigma">Tokens</Typography>
                           </Th>
                           <Th>
-                            <Typography variant="sigma">Aktionen</Typography>
+                            <Typography variant="sigma">Actions</Typography>
                           </Th>
                         </Tr>
                       </Thead>
@@ -1876,7 +1876,7 @@ const TokensPage = () => {
                                   size="S"
                                   variant="danger-light"
                                 >
-                                  Entsperren
+                                  Unban
                                 </Button>
                               </Flex>
                             </Td>
@@ -1896,28 +1896,28 @@ const TokensPage = () => {
       <Modal.Root open={showIPBanModal} onOpenChange={setShowIPBanModal}>
         <Modal.Content>
           <Modal.Header>
-            <Modal.Title>IP-Adresse bannen</Modal.Title>
+            <Modal.Title>Ban IP Address</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Flex direction="column" gap={2}>
               <TextInput
                 name="ip"
-                label="IP-Adresse"
+                label="IP Address"
                 value={ipToBan}
                 onChange={(e) => setIpToBan(e.target.value)}
-                placeholder="z.B. 192.168.1.1"
+                placeholder="e.g., 192.168.1.1"
               />
             </Flex>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={() => setShowIPBanModal(false)} variant="tertiary">
-              Abbrechen
+              Cancel
             </Button>
             <Button onClick={() => {
               banIP();
               setShowIPBanModal(false);
             }} startIcon={<Shield />} variant="danger">
-              IP bannen
+              Ban IP
             </Button>
           </Modal.Footer>
         </Modal.Content>
@@ -1927,7 +1927,7 @@ const TokensPage = () => {
       <Modal.Root open={showCreateModal} onOpenChange={setShowCreateModal}>
         <Modal.Content>
           <Modal.Header>
-            <Modal.Title>Neuen Token erstellen</Modal.Title>
+            <Modal.Title>Create New Token</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Box paddingTop={2}>
@@ -1935,13 +1935,13 @@ const TokensPage = () => {
                 name="email" 
                 id="email" 
                 required
-                hint={emailValidationStatus ? emailValidationStatus.message : "Die E-Mail-Adresse für den neuen Token"}
+                hint={emailValidationStatus ? emailValidationStatus.message : "The email address for the new token"}
                 error={emailValidationStatus && !emailValidationStatus.valid ? emailValidationStatus.message : null}
               >
-                <Field.Label>E-Mail-Adresse*</Field.Label>
+                <Field.Label>Email Address*</Field.Label>
                 <Field.Input
                   type="email"
-                  placeholder="benutzer@beispiel.de"
+                  placeholder="user@example.com"
                   name="email"
                   onChange={(e) => {
                     setEmailToCreate(e.target.value);
@@ -1949,7 +1949,7 @@ const TokensPage = () => {
                   }}
                   value={emailToCreate}
                   required
-                  aria-label="E-Mail-Adresse"
+                  aria-label="Email Address"
                   error={emailValidationStatus && !emailValidationStatus.valid ? emailValidationStatus.message : undefined}
                 />
                 {emailValidationStatus && emailValidationStatus.message && (
@@ -1965,17 +1965,17 @@ const TokensPage = () => {
                   name="json-context" 
                   id="json-context" 
                 >
-                  <Field.Label>JSON-Kontext</Field.Label>
+                  <Field.Label>JSON Context</Field.Label>
                   <Field.Input
                     as="textarea"
                     placeholder='{"key": "value"}'
                     name="json-context"
                     onChange={(e) => setJsonContext(e.target.value)}
                     value={jsonContext}
-                    aria-label="JSON-Kontext"
+                    aria-label="JSON Context"
                     style={{ height: '80px', fontFamily: 'monospace' }}
                   />
-                  <Field.Hint>Optionaler JSON-Kontext für den Token (z.B. in Form von Key-Value-Paaren)</Field.Hint>
+                  <Field.Hint>Optional JSON context for the token (e.g., in the form of key-value pairs)</Field.Hint>
                 </Field.Root>
               </Box>
               
@@ -1989,7 +1989,7 @@ const TokensPage = () => {
                       checked={sendEmail}
                       onChange={(e) => setSendEmail(e.target.checked)}
                     />
-                    <Field.Label htmlFor="send-email">E-Mail mit Magic Link senden</Field.Label>
+                    <Field.Label htmlFor="send-email">Send email with Magic Link</Field.Label>
                   </Flex>
                 </Field.Root>
               </Box>
@@ -2006,7 +2006,7 @@ const TokensPage = () => {
               }}
               variant="tertiary"
             >
-              Abbrechen
+              Cancel
             </Button>
             <Flex gap={2}>
               <Button 
@@ -2014,7 +2014,7 @@ const TokensPage = () => {
                 variant="secondary"
                 loading={isValidatingEmail}
               >
-                E-Mail validieren
+                Validate Email
               </Button>
               <Button 
                 onClick={() => {
@@ -2024,7 +2024,7 @@ const TokensPage = () => {
                 startIcon={<Check />}
                 disabled={isValidatingEmail || (emailValidationStatus && !emailValidationStatus.valid)}
               >
-                Token erstellen
+                Create Token
               </Button>
             </Flex>
           </Modal.Footer>
@@ -2042,12 +2042,12 @@ const TokensPage = () => {
               {/* Fallback auf Flex-Layout, da Grid Probleme verursacht */}
               <Box background="neutral100" padding={4} hasRadius style={{ marginBottom: '24px' }}>
                 <Typography variant="beta" textColor="primary600" style={{ marginBottom: '12px' }}>
-                  Allgemeine Informationen
+                  General Information
                 </Typography>
                 <Flex gap={4} wrap="wrap">
                   <Box width="45%" marginBottom={4}>
                     <Box padding={3} background="neutral0" hasRadius shadow="filterShadow" style={{ height: '100%' }}>
-                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">E-Mail</Typography>
+                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">Email</Typography>
                       <Box marginTop={2}>
                         <Link onClick={() => navigateToUserProfile(selectedToken.email)} style={{ cursor: 'pointer', textDecoration: 'none' }}>
                           <Typography textColor="primary600">{selectedToken.email}</Typography>
@@ -2072,16 +2072,16 @@ const TokensPage = () => {
                         <Flex direction="column" gap={2}>
                           {selectedToken.is_active ? (
                             <Badge backgroundColor="success100" textColor="success600" padding={2}>
-                              Aktiv
+                              Active
                             </Badge>
                           ) : (
                             <Badge backgroundColor="danger100" textColor="danger600" padding={2}>
-                              Blockiert
+                              Blocked
                             </Badge>
                           )}
                           {isExpired(selectedToken.expires_at) && (
                             <Badge backgroundColor="warning100" textColor="warning600" padding={2}>
-                              Abgelaufen
+                              Expired
                             </Badge>
                           )}
                         </Flex>
@@ -2090,20 +2090,20 @@ const TokensPage = () => {
                   </Box>
                   <Box width="30%" marginBottom={4}>
                     <Box padding={3} background="neutral0" hasRadius shadow="filterShadow" style={{ height: '100%' }}>
-                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">Benutzer-ID</Typography>
+                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">User ID</Typography>
                       <Box marginTop={2}>
                         <Typography variant="pi" fontFamily="monospace">
-                          {selectedToken.user_id || 'Nicht verfügbar'}
+                          {selectedToken.user_id || 'Not available'}
                         </Typography>
                       </Box>
                     </Box>
                   </Box>
                   <Box width="30%" marginBottom={4}>
                     <Box padding={3} background="neutral0" hasRadius shadow="filterShadow" style={{ height: '100%' }}>
-                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">IP-Adresse</Typography>
+                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">IP Address</Typography>
                       <Box marginTop={2}>
                         <Typography variant="pi" fontFamily="monospace">
-                          {selectedToken.ip_address || 'Nicht verfügbar'}
+                          {selectedToken.ip_address || 'Not available'}
                         </Typography>
                       </Box>
                     </Box>
@@ -2113,12 +2113,12 @@ const TokensPage = () => {
 
               <Box background="neutral100" padding={4} hasRadius style={{ marginBottom: '24px' }}>
                 <Typography variant="beta" textColor="primary600" style={{ marginBottom: '12px' }}>
-                  Zeitliche Informationen
+                  Temporal Information
                 </Typography>
                 <Flex gap={4} wrap="wrap">
                   <Box width="30%" marginBottom={4}>
                     <Box padding={3} background="neutral0" hasRadius shadow="filterShadow" style={{ height: '100%' }}>
-                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">Erstellt am</Typography>
+                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">Created At</Typography>
                       <Box marginTop={2}>
                         <Typography>
                           {formatDate(selectedToken.createdAt)}
@@ -2129,7 +2129,7 @@ const TokensPage = () => {
                   <Box width="30%" marginBottom={4}>
                     <Box padding={3} background={isExpired(selectedToken.expires_at) ? "danger100" : "success100"} hasRadius shadow="filterShadow" style={{ height: '100%' }}>
                       <Typography variant="delta" fontWeight="bold" textColor={isExpired(selectedToken.expires_at) ? "danger600" : "success600"}>
-                        Gültig bis
+                        Valid Until
                       </Typography>
                       <Box marginTop={2}>
                         <Typography textColor={isExpired(selectedToken.expires_at) ? "danger600" : "success600"}>
@@ -2140,10 +2140,10 @@ const TokensPage = () => {
                   </Box>
                   <Box width="30%" marginBottom={4}>
                     <Box padding={3} background="neutral0" hasRadius shadow="filterShadow" style={{ height: '100%' }}>
-                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">Zuletzt verwendet</Typography>
+                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">Last Used</Typography>
                       <Box marginTop={2}>
                         <Typography>
-                          {selectedToken.last_used_at ? formatDate(selectedToken.last_used_at) : 'Noch nicht verwendet'}
+                          {selectedToken.last_used_at ? formatDate(selectedToken.last_used_at) : 'Not used yet'}
                         </Typography>
                       </Box>
                     </Box>
@@ -2154,7 +2154,7 @@ const TokensPage = () => {
               {selectedToken.user_agent && (
                 <Box background="neutral100" padding={4} hasRadius>
                   <Typography variant="beta" textColor="primary600" style={{ marginBottom: '12px' }}>
-                    Geräte- und Browser-Informationen
+                    Device and Browser Information
                   </Typography>
                   <Box padding={3} background="neutral0" hasRadius shadow="filterShadow">
                     <Typography variant="delta" fontWeight="bold" textColor="neutral800">User Agent</Typography>
@@ -2166,7 +2166,7 @@ const TokensPage = () => {
                     <Divider marginTop={4} marginBottom={4} />
                     <Flex gap={4} wrap="wrap">
                       <Box width="45%" marginBottom={4}>
-                        <Typography variant="delta" fontWeight="bold" textColor="neutral800">Erkannter Browser</Typography>
+                        <Typography variant="delta" fontWeight="bold" textColor="neutral800">Detected Browser</Typography>
                         <Box marginTop={2}>
                           <Typography>
                             {extractBrowserInfo(selectedToken.user_agent).name} {extractBrowserInfo(selectedToken.user_agent).version && ` v${extractBrowserInfo(selectedToken.user_agent).version}`}
@@ -2174,7 +2174,7 @@ const TokensPage = () => {
                         </Box>
                       </Box>
                       <Box width="45%" marginBottom={4}>
-                        <Typography variant="delta" fontWeight="bold" textColor="neutral800">Betriebssystem</Typography>
+                        <Typography variant="delta" fontWeight="bold" textColor="neutral800">Operating System</Typography>
                         <Box marginTop={2}>
                           <Typography>
                             {extractBrowserInfo(selectedToken.user_agent).device} {extractBrowserInfo(selectedToken.user_agent).osVersion && ` ${extractBrowserInfo(selectedToken.user_agent).osVersion}`}
@@ -2189,7 +2189,7 @@ const TokensPage = () => {
               {selectedToken.context && Object.keys(selectedToken.context).length > 0 && (
                  <Box background="neutral100" padding={4} hasRadius>
                    <Typography variant="beta" textColor="primary600" style={{ marginBottom: '12px' }}>
-                     Context Daten
+                     Context Data
                    </Typography>
                    <Box padding={3} background="neutral0" hasRadius shadow="filterShadow">
                      <Typography variant="delta" fontWeight="bold" textColor="neutral800">Context JSON</Typography>
@@ -2223,7 +2223,7 @@ const TokensPage = () => {
                       variant="danger"
                       startIcon={<Lock />}
                     >
-                      Blockieren
+                      Block
                     </Button>
                   ) : (
                     <Button 
@@ -2231,7 +2231,7 @@ const TokensPage = () => {
                       variant="success"
                       startIcon={<CheckCircle />}
                     >
-                      Aktivieren
+                      Activate
                     </Button>
                   )}
                 </Box>
@@ -2244,12 +2244,12 @@ const TokensPage = () => {
                       name="days"
                       value={extensionDays}
                       onChange={(e) => setExtensionDays(parseInt(e.target.value) || 1)}
-                      aria-label="Tage"
+                      aria-label="Days"
                       style={{ width: '60px' }}
                       min="1"
                       max="365"
                     />
-                    <Box paddingLeft={2}>Tage</Box>
+                    <Box paddingLeft={2}>Days</Box>
                   </Flex>
                   
                   <Button 
@@ -2257,11 +2257,11 @@ const TokensPage = () => {
                     variant="secondary"
                     startIcon={<Clock />}
                   >
-                    Gültigkeit verlängern
+                    Extend Validity
                   </Button>
                   
                   <Button onClick={() => setShowTokenDetailModal(false)} variant="tertiary">
-                    Schließen
+                    Close
                   </Button>
                 </Flex>
               </Flex>
@@ -2274,19 +2274,19 @@ const TokensPage = () => {
       <Modal.Root open={showIPUnbanModal} onOpenChange={setShowIPUnbanModal}>
         <Modal.Content>
           <Modal.Header>
-            <Modal.Title>IP-Adresse entsperren</Modal.Title>
+            <Modal.Title>Unban IP Address</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Typography variant="omega">
-              Möchten Sie die IP-Adresse {ipToUnban} wirklich entsperren?
+              Do you really want to unban the IP address {ipToUnban}?
             </Typography>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={() => setShowIPUnbanModal(false)} variant="tertiary">
-              Abbrechen
+              Cancel
             </Button>
             <Button onClick={unbanIP} startIcon={<CheckCircle />} variant="success">
-              IP entsperren
+              Unban IP
             </Button>
           </Modal.Footer>
         </Modal.Content>
@@ -2295,4 +2295,4 @@ const TokensPage = () => {
   );
 };
 
-export default TokensPage; 
+export default TokensPage;

@@ -46,8 +46,7 @@ const HomePage = () => {
           </Typography>
 
           <Typography variant="omega" textColor="neutral600">
-            Ermöglichen Sie Ihren Benutzern eine sichere und passwortlose Anmeldung über einmalige Magic Links, 
-            die per E-Mail versendet werden. Verwalten Sie aktive Tokens für maximale Sicherheit.
+            Enable your users to securely and passwordlessly log in using one-time magic links sent via email. Manage active tokens for maximum security.
           </Typography>
         </Flex>
       </Box>
@@ -79,12 +78,12 @@ const HomePage = () => {
                 <Typography variant="delta" textAlign="center" fontWeight="bold">
                   {formatMessage({
                     id: getTrad('pages.HomePage.settings'),
-                    defaultMessage: 'Konfiguration'
+                    defaultMessage: 'Configuration'
                   })}
                 </Typography>
                 
                 <Typography textAlign="center">
-                  Konfigurieren Sie E-Mail-Vorlagen, Token-Einstellungen und Benutzerregistrierungen nach Ihren Anforderungen.
+                  Configure email templates, token settings, and user registrations according to your requirements.
                 </Typography>
                 
                 <LinkButton
@@ -96,7 +95,7 @@ const HomePage = () => {
                 >
                   {formatMessage({
                     id: getTrad('pages.HomePage.settings.cta'),
-                    defaultMessage: 'Zu den Einstellungen'
+                    defaultMessage: 'Go to Settings'
                   })}
                 </LinkButton>
               </Flex>
@@ -130,12 +129,12 @@ const HomePage = () => {
                 <Typography variant="delta" textAlign="center" fontWeight="bold">
                   {formatMessage({
                     id: getTrad('pages.HomePage.tokens'),
-                    defaultMessage: 'Token-Verwaltung'
+                    defaultMessage: 'Token Management'
                   })}
                 </Typography>
                 
                 <Typography textAlign="center">
-                  Überwachen und verwalten Sie aktive Anmelde-Tokens. Sperren Sie verdächtige Aktivitäten und behalten Sie den Überblick.
+                  Monitor and manage active login tokens. Block suspicious activities and stay in control.
                 </Typography>
                 
                 <LinkButton
@@ -147,7 +146,7 @@ const HomePage = () => {
                 >
                   {formatMessage({
                     id: getTrad('pages.HomePage.tokens.cta'),
-                    defaultMessage: 'Tokens verwalten'
+                    defaultMessage: 'Manage Tokens'
                   })}
                 </LinkButton>
               </Flex>
@@ -181,12 +180,12 @@ const HomePage = () => {
                 <Typography variant="delta" textAlign="center" fontWeight="bold">
                   {formatMessage({
                     id: getTrad('pages.HomePage.users'),
-                    defaultMessage: 'Benutzerverwaltung'
+                    defaultMessage: 'User Management'
                   })}
                 </Typography>
                 
                 <Typography textAlign="center">
-                  Verwalten Sie Benutzerkonten und -berechtigungen in der integrierten Benutzerverwaltung von Strapi.
+                  Manage user accounts and permissions in Strapi's integrated user management.
                 </Typography>
                 
                 <LinkButton
@@ -198,7 +197,7 @@ const HomePage = () => {
                 >
                   {formatMessage({
                     id: getTrad('pages.HomePage.users.cta'),
-                    defaultMessage: 'Benutzer verwalten'
+                    defaultMessage: 'Manage Users'
                   })}
                 </LinkButton>
               </Flex>
@@ -225,4 +224,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage; 
+export default HomePage;

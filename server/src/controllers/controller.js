@@ -122,19 +122,19 @@ module.exports = {
   },
 
   /**
-   * Setzt alle Magic Link Daten und Einstellungen zurück
+   * Resets all Magic Link data and settings
    * @param {Object} ctx - Context
    */
   async resetData(ctx) {
     try {
-      // Plugin Store für die Einstellungen
+      // Plugin Store for settings
       const pluginStore = strapi.store({
         environment: '',
         type: 'plugin',
         name: 'magic-link',
       });
 
-      // Standardeinstellungen definieren
+      // Define default settings
       const defaultSettings = {
         enabled: true,
         createUserIfNotExists: false,
@@ -174,42 +174,42 @@ This link will expire in 1 hour.`,
         jwt_token_expires_in: '30d'
       };
 
-      // Einstellungen zurücksetzen
+      // Reset settings
       await pluginStore.set({ key: 'settings', value: defaultSettings });
 
-      // Alle Magic Link Tokens löschen
+      // Delete all Magic Link tokens
       await strapi.db.query('plugin::magic-link.token').deleteMany({
         where: {},
       });
 
-      // JWT Sessions löschen
+      // Delete JWT sessions
       try {
         await pluginStore.delete({ key: 'jwt_sessions' });
       } catch (error) {
-        console.error('Fehler beim Löschen der JWT Sessions:', error);
+        console.error('Error deleting JWT sessions:', error);
       }
 
-      // Gebannte IPs zurücksetzen
+      // Reset banned IPs
       try {
         await pluginStore.set({ key: 'banned_ips', value: { ips: [] } });
       } catch (error) {
-        console.error('Fehler beim Zurücksetzen der gebannten IPs:', error);
+        console.error('Error resetting banned IPs:', error);
       }
 
-      // Gesperrte JWT-Tokens zurücksetzen
+      // Reset blocked JWT tokens
       try {
         await pluginStore.set({ key: 'blocked_jwt_tokens', value: { tokens: [] } });
       } catch (error) {
-        console.error('Fehler beim Zurücksetzen der gesperrten JWT-Tokens:', error);
+        console.error('Error resetting blocked JWT tokens:', error);
       }
 
-      // Erfolgreiche Antwort senden
+      // Send success response
       ctx.send({
         success: true,
-        message: 'Alle Magic Link Daten wurden zurückgesetzt.',
+        message: 'All Magic Link data has been reset.',
       });
     } catch (error) {
-      console.error('Fehler beim Zurücksetzen der Magic Link Daten:', error);
+      console.error('Error resetting Magic Link data:', error);
       ctx.throw(500, error);
     }
   },

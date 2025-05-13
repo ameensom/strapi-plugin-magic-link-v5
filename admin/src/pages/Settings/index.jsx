@@ -165,7 +165,7 @@ const Settings = () => {
       console.error('Error fetching Magic Link settings:', error);
       toggleNotification({
         type: 'warning',
-        message: 'Fehler beim Laden der Magic Link-Einstellungen'
+        message: 'Error loading Magic Link settings'
       });
     } finally {
       setIsLoading(false);
@@ -184,7 +184,7 @@ const Settings = () => {
         console.error('Error fetching email templates:', error);
         toggleNotification({
           type: 'warning',
-          message: 'Fehler beim Laden der E-Mail-Templates'
+          message: 'Error loading email templates'
         });
       }
     }
@@ -796,7 +796,7 @@ const Settings = () => {
                       <StyledNumberInput
                         name="expire_period"
                         label={safeTranslate('settings.general.expirationPeriod.label', 'Expiration period in seconds')}
-                        hint={safeTranslate('settings.general.expirationPeriod.hint', 'Zeitraum in Sekunden, nach dem der Magic-Link abläuft und nicht mehr verwendet werden kann. Standardwert: 3600 (1 Stunde)')}
+                        hint={safeTranslate('settings.general.expirationPeriod.hint', 'Period in seconds after which the magic link expires and can no longer be used. Default: 3600 (1 hour)')}
                         value={localForm.expire_period}
                         onChange={(val) => handleNumberChange('expire_period', val)}
                       />
@@ -813,7 +813,7 @@ const Settings = () => {
                       <StyledNumberInput
                         name="token_length"
                         label={safeTranslate('settings.general.tokenLength.label', 'Token length')}
-                        hint={safeTranslate('settings.general.tokenLength.hint', 'Länge des generierten Tokens in Zeichen. Längere Tokens bieten mehr Sicherheit. Empfohlen: 20-40 Zeichen.')}
+                        hint={safeTranslate('settings.general.tokenLength.hint', 'Length of the generated token in characters. Longer tokens provide more security. Recommended: 20-40 characters.')}
                         value={localForm.token_length}
                         onChange={(val) => handleNumberChange('token_length', val)}
                       />
@@ -830,7 +830,7 @@ const Settings = () => {
                       <StyledNumberInput
                         name="max_login_attempts"
                         label={safeTranslate('settings.general.maxLoginAttempts.label', 'Max login attempts')}
-                        hint={safeTranslate('settings.general.maxLoginAttempts.hint', 'Begrenzt die Anzahl fehlgeschlagener Login-Versuche, bevor ein Benutzer blockiert wird. Bei 0 ist diese Funktion deaktiviert.')}
+                        hint={safeTranslate('settings.general.maxLoginAttempts.hint', 'Limits the number of failed login attempts before a user is blocked. Set to 0 to disable this feature.')}
                         value={localForm.max_login_attempts}
                         onChange={(val) => handleNumberChange('max_login_attempts', val)}
                       />
@@ -847,7 +847,7 @@ const Settings = () => {
                       <StyledTextInput
                         name="login_path"
                         label={safeTranslate('settings.general.loginPath.label', 'Login API path')}
-                        hint={safeTranslate('settings.general.loginPath.hint', 'Der API-Pfad, unter dem der Magic-Link-Login-Endpunkt erreichbar ist. Standardwert ist /magic-link/login und wird mit dem loginToken-Parameter verwendet (z.B. /magic-link/login?loginToken=XXX).')}
+                        hint={safeTranslate('settings.general.loginPath.hint', 'The API path where the magic link login endpoint is accessible. Default is /magic-link/login and is used with the loginToken parameter (e.g., /magic-link/login?loginToken=XXX).')}
                         value={localForm.login_path}
                         onChange={handleChange}
                       />
@@ -864,7 +864,7 @@ const Settings = () => {
                       <StyledTextInput
                         name="confirmationUrl"
                         label={safeTranslate('settings.general.confirmationUrl.label', 'Confirmation URL')}
-                        hint={safeTranslate('settings.general.confirmationUrl.hint', 'Die URL, zu der Benutzer weitergeleitet werden, nachdem sie auf den Magic-Link geklickt haben. Dies ist die Basis-URL, die im Magic-Link verwendet wird.')}
+                        hint={safeTranslate('settings.general.confirmationUrl.hint', 'The URL to which users are redirected after clicking the magic link. This is the base URL used in the magic link.')}
                         value={localForm.confirmationUrl}
                         onChange={handleChange}
                       />
@@ -881,7 +881,7 @@ const Settings = () => {
                       <StyledTextInput
                         name="callback_url"
                         label={safeTranslate('settings.general.callbackUrl.label', 'Callback URL')}
-                        hint={safeTranslate('settings.general.callbackUrl.hint', 'Die URL, zu der Benutzer nach erfolgreicher Authentifizierung weitergeleitet werden. Wenn leer, werden Benutzer zur Startseite weitergeleitet.')}
+                        hint={safeTranslate('settings.general.callbackUrl.hint', 'The URL to which users are redirected after successful authentication. If empty, users are redirected to the homepage.')}
                         value={localForm.callback_url}
                         onChange={handleChange}
                       />
@@ -1030,7 +1030,7 @@ const Settings = () => {
                       <StyledTextInput
                         name="jwt_token_expires_in"
                         label={safeTranslate('settings.authentication.jwtTokenExpiration.label', 'JWT token expiration time')}
-                        hint={safeTranslate('settings.authentication.jwtTokenExpiration.hint', 'Gültigkeitsdauer des JWT-Tokens nach erfolgreicher Authentifizierung. Beispiele: \'1h\' (1 Stunde), \'7d\' (7 Tage), \'30d\' (30 Tage)')}
+                        hint={safeTranslate('settings.authentication.jwtTokenExpiration.hint', 'Validity period of the JWT token after successful authentication. Examples: \'1h\' (1 hour), \'7d\' (7 days), \'30d\' (30 days)')}
                         value={localForm.jwt_token_expires_in}
                         onChange={handleChange}
                       />
@@ -1125,7 +1125,7 @@ const Settings = () => {
                         </Typography>
                         <Box paddingTop={2}>
                           <Typography variant="pi" textColor="neutral600">
-                            Das Email Designer 5 Plugin ist installiert. Sie können Templates aus dem Email Designer für Magic Link Emails verwenden.
+                            The Email Designer 5 plugin is installed. You can use templates from the Email Designer for Magic Link emails.
                           </Typography>
                         </Box>
                       </FieldRow>
@@ -1135,8 +1135,8 @@ const Settings = () => {
                       <FieldRow>
                         <ToggleField
                           name="use_email_designer"
-                          label="Email Designer Templates verwenden"
-                          hint="Aktivieren Sie diese Option, um Email Designer Templates anstelle der einfachen HTML/Text-Emails zu verwenden."
+                          label="Use Email Designer Templates"
+                          hint="Enable this option to use Email Designer templates instead of simple HTML/Text emails."
                           value={localForm.use_email_designer}
                         />
                       </FieldRow>
@@ -1152,7 +1152,7 @@ const Settings = () => {
                             <StyledTextInput
                               name="email_designer_template_id"
                               label="Email Template ID"
-                              hint="Geben Sie die ID des Email Templates ein"
+                              hint="Enter the ID of the email template"
                               value={localForm.email_designer_template_id}
                               onChange={handleChange}
                             />
@@ -1239,18 +1239,18 @@ const Settings = () => {
               <Divider />
               <Box paddingTop={6}>
                 <Typography variant="beta" textColor="danger600">
-                  {safeTranslate('settings.reset.title', 'Zurücksetzen & Daten löschen')}
+                  {safeTranslate('settings.reset.title', 'Reset & Delete Data')}
                 </Typography>
                 <Box paddingTop={2} paddingBottom={4}>
                   <Typography variant="omega" textColor="neutral600">
-                    {safeTranslate('settings.reset.description', 'Diese Aktion setzt alle Magic Link Einstellungen auf die Standardwerte zurück und löscht alle gespeicherten Tokens, JWT-Sessions und gebannte IPs. Diese Aktion kann nicht rückgängig gemacht werden!')}
+                    {safeTranslate('settings.reset.description', 'This action resets all Magic Link settings to default values and deletes all stored tokens, JWT sessions, and banned IPs. This action cannot be undone!')}
                   </Typography>
                 </Box>
                 <Button
                   variant="danger"
                   onClick={() => {
                     // Bestätigung vom Benutzer einholen
-                    if (window.confirm(safeTranslate('settings.reset.confirmMessage', 'Sind Sie sicher, dass Sie alle Magic Link Daten zurücksetzen möchten? Diese Aktion kann nicht rückgängig gemacht werden!'))) {
+                    if (window.confirm(safeTranslate('settings.reset.confirmMessage', 'Are you sure you want to reset all Magic Link data? This action cannot be undone!'))) {
                       setIsLoading(true);
                       // API-Anfrage senden
                       post('/magic-link/reset-data')
@@ -1258,17 +1258,17 @@ const Settings = () => {
                           // Benachrichtigung anzeigen
                           toggleNotification({
                             type: 'success',
-                            message: response.data.message || 'Alle Magic Link Daten wurden zurückgesetzt.'
+                            message: response.data.message || 'All Magic Link data has been reset.'
                           });
                           
                           // Formular neu laden
                           loadSettings();
                         })
                         .catch(error => {
-                          console.error('Fehler beim Zurücksetzen der Daten:', error);
+                          console.error('Error resetting data:', error);
                           toggleNotification({
                             type: 'danger',
-                            message: 'Fehler beim Zurücksetzen der Daten: ' + (error.response?.data?.message || error.message)
+                            message: 'Error resetting data: ' + (error.response?.data?.message || error.message)
                           });
                         })
                         .finally(() => {
@@ -1279,7 +1279,7 @@ const Settings = () => {
                   startIcon={<Trash />}
                   disabled={isLoading}
                 >
-                  {safeTranslate('settings.reset.button', 'Alle Daten zurücksetzen')}
+                  {safeTranslate('settings.reset.button', 'Reset All Data')}
                 </Button>
               </Box>
             </Box>

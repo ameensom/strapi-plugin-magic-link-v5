@@ -517,11 +517,11 @@ const HomePage = () => {
                       </Box>
                       <Box style={{ textAlign: 'center' }}>
                         <Typography variant="delta" textAlign="center" fontWeight="bold" paddingBottom={2}>
-                          JWT-Session-Verwaltung
+                          JWT Session Management
                         </Typography>
                         <br />
                         <Typography textAlign="center" variant="epsilon">
-                          Überwachen Sie aktive JWT-Sessions und erhöhen Sie die Sicherheit Ihrer Anwendung.
+                          Monitor active JWT sessions and enhance the security of your application.
                         </Typography>
                       </Box>
                       <Box style={{ marginTop: 'auto', width: '100%', textAlign: 'center' }}>
@@ -533,7 +533,7 @@ const HomePage = () => {
                             window.location.href = '/admin/settings/magic-link';
                           }}
                         >
-                          Einstellungen öffnen
+                          Open Settings
                         </Button>
                       </Box>
                     </Flex>
@@ -549,7 +549,7 @@ const HomePage = () => {
                 <Box padding={5}>
                   <Box paddingBottom={4}>
                     <Typography variant="delta" fontWeight="bold">
-                      System-Status
+                      System Status
                     </Typography>
                   </Box>
                   <Divider />
@@ -559,7 +559,7 @@ const HomePage = () => {
                         <Check width="1rem" color="success600" />
                         <Typography fontWeight="bold">Magic Link Status</Typography>
                       </Flex>
-                      <Badge active>Aktiv</Badge>
+                      <Badge active>Active</Badge>
                     </Box>
                     
                     <Box textAlign="center" paddingBottom={3}>
@@ -567,15 +567,15 @@ const HomePage = () => {
                         <Check width="1rem" color="success600" />
                         <Typography fontWeight="bold">JWT Sessions</Typography>
                       </Flex>
-                      <Badge active>Funktioniert</Badge>
+                      <Badge active>Operational</Badge>
                     </Box>
                     
                     <Box textAlign="center" paddingBottom={3}>
                       <Flex gap={2} justifyContent="center" alignItems="center" paddingBottom={2}>
                         <Check width="1rem" color="success600" />
-                        <Typography fontWeight="bold">E-Mail-Versand</Typography>
+                        <Typography fontWeight="bold">Email Delivery</Typography>
                       </Flex>
-                      <Badge active>Konfiguriert</Badge>
+                      <Badge active>Configured</Badge>
                     </Box>
                     <Divider />
                     
@@ -593,7 +593,7 @@ const HomePage = () => {
                     </Flex>
                     <Flex direction="column" gap={1}>
                       <Typography variant="pi" textColor="neutral600">
-                        Letzter API-Aufruf
+                        Last API Call
                       </Typography>
                       <Typography variant="pi" fontWeight="bold">
                         {new Date().toLocaleString()}
@@ -606,7 +606,7 @@ const HomePage = () => {
                       <Typography variant="pi" fontWeight="bold">
                         {window.navigator.userAgent.includes('Chrome') ? 'Chrome' : 
                          window.navigator.userAgent.includes('Firefox') ? 'Firefox' : 
-                         window.navigator.userAgent.includes('Safari') ? 'Safari' : 'Unbekannt'}
+                         window.navigator.userAgent.includes('Safari') ? 'Safari' : 'Unknown'}
                       </Typography>
                     </Flex>
                   </Flex>
@@ -647,6 +647,28 @@ const HomePage = () => {
         borderWidth="1px"
         borderStyle="solid"
       >
+        <Flex direction="column" gap={4}>
+          <Box textAlign="center">
+            <Typography variant="delta" fontWeight="bold">
+              JWT Session Management
+            </Typography>
+            <Typography variant="epsilon" textColor="neutral600">
+              Monitor active JWT sessions and enhance the security of your application.
+            </Typography>
+          </Box>
+          <Box textAlign="center">
+            <Button
+              variant="secondary"
+              startIcon={<Shield />}
+              endIcon={<ArrowRight />}
+              onClick={() => {
+                window.location.href = '/admin/settings/magic-link';
+              }}
+            >
+              Open Settings
+            </Button>
+          </Box>
+        </Flex>
       </Box>
     </Main>
   );
