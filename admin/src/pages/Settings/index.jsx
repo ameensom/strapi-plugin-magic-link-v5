@@ -426,6 +426,11 @@ const Settings = () => {
       debounceTimeout.current = setTimeout(() => {
         saveScrollPosition();
         onChange({ target: { name, value: newValue } });
+
+        // Ensure the input retains focus after state update
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
       }, 300);
     };
     
